@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task7</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="task7.css">
+	<script type="text/javascript">
+	window.onload = function(){
+		var oSetBtn = document.getElementById('set-button');
+		var oSetBox = document.getElementById('set-style');
+		oSetBtn.onclick = function() {
+			oSetBox.style.display = 'block';
+		}
+	};
+
+	</script>
+</head>
+<body>
+	<div class="title">
+		<strong>请为下面的DIV设置样式：</strong>
+		<input id="set-button" type="button" name="set" value="点击设置">
+		<div id="box">
+		</div>
+	</div>
+	<div id="set-style">
+		<div>
+			请选择背景色:
+			<input id="red" class="Fil" type="button" name="background" value="红">
+			<input id="yellow" class="Fil" type="button" name="background" value="黄">
+			<input id="blue" class="Fil" type="button" name="background" value="蓝"><!-- Fil设置按钮透明度 -->
+		</div>
+		<div id="WidHei"><!-- w-h选择宽高 -->
+			请选择宽(px):
+			<input type="button" name="width" value="200">
+			<input type="button" name="width" value="300">
+			<input type="button" name="width" value="400">
+		</div>
+		<div id="WidHei">
+		请选择高(px):
+		<input type="button" name="heigt" value="200">
+		<input type="button" name="heigt" value="300">
+		<input type="button" name="heigt" value="400">
+		</div>
+		<div>
+			<input id="reset" class="set" type="button" name="reset" value="恢复">
+
+			<input id="sure" class="set" type="button" name="set" value="确定">
+		</div>
+	</div>
+	
+</body>
+</html>
