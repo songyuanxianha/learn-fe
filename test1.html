@@ -1,0 +1,237 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+
+ul,li{
+	
+	list-style:none;
+	
+	margin:0px;
+	
+	padding:0px;
+	
+}
+
+#MaxBox{
+	
+	width:315px;
+	
+	height:auto;
+	
+	margin:10px auto;
+	
+}
+
+.box{
+	
+	width:150px;
+	
+	height:80px;
+	
+	overflow:hidden;
+	
+	margin-left:5px;
+	
+	margin-top:5px;
+	
+	position:relative;
+	
+	float:left;
+	
+}
+
+.box ul{
+	
+	width:150px;
+	
+	height:auto;
+	
+	position:absolute;
+	
+	left:0px;
+	
+	top:0px;
+	
+}
+
+.box ul li{
+	
+	width:150px;
+	
+	height:80px;
+	
+	font-size:50px;
+	
+	font-weight:bold;
+	
+	text-align:center;
+	
+	line-height:80px;
+	
+	color:#FFFFFF;
+	
+}
+
+</style>
+<script>
+
+function gs(os,cls){
+	
+	var aEx=os.getElementsByTagName('*');
+	
+	var arr=[];
+	
+	var re=new RegExp('\\b'+cls+'\\b');
+	
+	for(var a=0;a<aEx.length;a++){
+		
+		if(re.test(aEx[a].className)){
+			
+			arr.push(aEx[a]);
+			
+		}
+		
+	};
+	
+	return arr;
+	
+};
+
+function doM(obj,attr,sp,end){
+	
+	sp=parseInt(getComputedStyle(obj)[attr])<end?sp:-sp;
+	
+	clearInterval(obj.tm);
+	
+	obj.tm=setInterval(function(){
+		
+		obj.mos=parseInt(getComputedStyle(obj)[attr])+sp;
+		
+		if(obj.mos>=end&&sp>0||obj.mos<=end&&sp<0){
+			
+			obj.mos=end;
+			
+		};
+		
+		obj.style[attr]=obj.mos+'px';
+		
+		if(obj.mos==end){
+			
+			clearInterval(obj.tm);
+			
+		};
+		
+	},20);
+	
+};
+
+function doTag(oBox,num,ls){
+	
+	var oUl=oBox.getElementsByTagName('ul')[0];
+	
+	var aLi=oUl.getElementsByTagName('li');
+	
+	var strLi='';
+	
+	for(var q=0;q<ls;q++){
+		
+		strLi+='<li>'+q+'</li>';
+		
+	}
+	
+	oUl.innerHTML=strLi;
+	
+	var aLiH=aLi[0].offsetHeight;
+	
+	oUl.style.height=ls*aLiH+'px';
+	
+	for(var s=0;s<ls;s++){
+		
+		var m1=Math.round(Math.random()*50+190);
+		
+		var m2=Math.round(Math.random()*40+110);
+		
+		var m3=Math.round(Math.random()*30+80);
+		
+		aLi[s].style.backgroundColor='rgb('+m1+','+m2+','+m3+')';
+		
+	}
+	
+	doM(oUl,'top',10,-num*aLiH);
+	
+};
+
+</script>
+<script>
+
+window.onload=function(){
+	
+	var aBox=gs(document,'box');
+	
+	var als=aBox.length;
+	
+	for(var w=0;w<als;w++){
+		
+		doTag(aBox[w],0,5);
+		
+	}
+	
+	setInterval(function(){
+		
+		for(var w1=0;w1<als;w1++){
+			
+			var ram=Math.round(Math.random()*4);
+			
+			doTag(aBox[w1],ram,5);
+			
+		}
+		
+	},2000);
+	
+};
+
+</script>
+</head>
+
+<body>
+
+<div id="MaxBox">
+	
+	<div class="box">
+		<ul></ul>
+	</div>
+	
+	<div class="box">
+		<ul></ul>
+	</div>
+	
+	<div class="box">
+		<ul></ul>
+	</div>
+	
+	<div class="box">
+		<ul></ul>
+	</div>
+	
+	<div class="box">
+		<ul></ul>
+	</div>
+	
+	<div class="box">
+		<ul></ul>
+	</div>
+	
+	<div class="box">
+		<ul></ul>
+	</div>
+	
+	<div class="box">
+		<ul></ul>
+	</div>
+
+</div>
+
+</body>
+</html>
