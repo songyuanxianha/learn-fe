@@ -1,0 +1,25 @@
+body,ul,li,input,span {
+	margin: 0px;
+	padding: 0px;
+}
+#btns {
+	margin-top: 30px;
+	margin-left: 79px;
+}
+li {
+
+	margin-bottom: 45px;
+	list-style-image: url(1.png);
+
+}
+input {
+	width: 114px;
+	height: 54px;
+	font-size: 32px;
+	border-radius: 7px;
+	background: #fff;
+}
+span {
+	font-size: 36px;
+	margin-left: 38px;
+}
