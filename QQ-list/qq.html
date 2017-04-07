@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="content" content="text/html"; charset="utf-8">
+	<style type="text/css">
+		html,body,ul,li {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+			border: 1px solid black;
+		}
+		#warp {
+			margin-left: 30px;
+			margin-top: 20px;
+		}
+		.friendGroup {    /*分组那个div*/  
+			background: #60f8fe;
+			width: 264px;
+			height: 38px;
+			font-size: 27px;
+			line-height: 38px;
+			border: 1px solid black;
+			padding-left: 27px;
+			position: relative;
+			/*padding-top: 5px;
+			padding-bottom: 5px;*/
+		}
+		
+		.triangleRight {
+			display: inline-block;
+			width: 0px;
+			height: 0px;
+			border-top:5px transparent solid;
+			border-left: 3px #6a6f6d solid;
+			border-bottom: 5px transparent solid;
+			position: absolute;
+			left: 8px;
+			top: 14px;
+
+		}
+		.triangleBottom {
+			display: inline-block;
+			width: 0px;
+			height: 0px;
+			border-top:3px #6a6f6d solid;
+			border-left: 5px transparent solid;
+			border-right: 5px transparent solid;
+			position: absolute;
+			left: 8px;
+			top: 14px;
+		}
+
+		li {
+			width: 291px;
+			height: 27px;
+			font-size: 19px;
+			line-height: 27px;
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+
+	<div id="warp">
+		<div class="friendGroup myFriend"><div class="triangleRight"></div>我的好友</div>
+		<div class="friendGroup companyFriend"><div class="triangleRight"></div>企业好友</div>
+		<div class="friendGroup blackList"><div class="triangleRight"></div>黑名单</div>
+	</div>
+	<script type="text/javascript" src="jquery-3.2.0.min.js"></script>
+	<script type="text/javascript">
+		var myFriend = ['张三','张三','张三','张三'];
+		var companyFriend = ['李四','李四','李四','李四'];
+		var blackList = ['李小三','张小四'];
+		$('div').filter('.myFriend').click(function() {
+			$('div .friendGroup').css('background','#60f8fe');
+			$(this).css('background','#f7f694');
+			$('ul').remove();
+			$(this).children().attr('class','triangleBottom');
+			if($('.myFriendList').length == 0){
+				$(this).after($('<ul class="myFriendList"></ul>'));
+				for (var i = 0; i < myFriend.length; i++) {
+					$(this).next().append($('<li>' + myFriend[i] + '</li>'));
+						$('li').click(function() {
+							$('li').css('background','white');
+							$(this).css('background','#cef793');
+						});					
+				}
+			}	
+		});
+		$('div').filter('.companyFriend').click(function() {
+			$('div .friendGroup').css('background','#60f8fe');
+			$(this).css('background','#f7f694')
+			$('ul').remove();
+			$(this).children().attr('class','triangleBottom');
+			if($('.companyFriendList').length == 0){
+				$(this).after($('<ul class="companyFriendList"></ul>'));
+				for (var i = 0; i < companyFriend.length; i++) {
+					$(this).next().append($('<li>' + companyFriend[i] + '</li>'));
+						$('li').click(function() {
+							$('li').css('background','white');							
+							$(this).css('background','#cef793');
+						});					
+				}
+			}
+		});
+		$('div').filter('.blackList').click(function() {
+			$('div .friendGroup').css('background','#60f8fe');
+			$(this).css('background','#f7f694')
+			$('ul').remove();
+			$(this).children().attr('class','triangleBottom');
+			if ($('.blackListList').length == 0){
+				$(this).after($('<ul class="blackListList"></ul>'));
+				for (var i = 0; i < blackList.length; i++) {
+					$(this).next().append($('<li>' + blackList[i] + '</li>'));
+						$('li').click(function() {
+							$('li').css('background','white');							
+							$(this).css('background','#cef793');
+						});
+				}
+			}
+		});
+		$('li').click(function() {
+			$(this).css('background','#cef793');
+		});
+	</script>
+</body>
+</html>
